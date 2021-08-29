@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Foodies</title>
+            <link rel="stylesheet"    href= "/static/css/main.css" />
+            <link rel="shortcut icon" href= "static/css/images/fav.ico">
+        </head>
+
+        <header>
+            <ul class="menu">                
+            <li>
+            <a href= "/"> Accueil</a>
+          </li>
+        </ul>
+        </header>
+        
+        <body>
+            <form method="POST" enctype="multipart/form-data">
+                Veuillez selectionner votre photo :</br>
+                <input type="file" id = "images_users" name="image_users" accept="image/*" multiple>
+                <center><input type="submit" value="Analyse" /></center>
+          </form>
+  
+          <div> 
+              {{pred}}
+          </br>
+              <table border="1" >
+                  {% for apport_row in apports_row %}
+                  {{apports_cols[loop.index]}}
+                  {{ apport_row|safe }}
+                  {% endfor %}
+              </table>
+  
+            </div>
+  
+        </body>
+
+        <footer> 
+            <ul class="menu">                
+                <li> <a href= "/about"> A propos</a> </li>
+            </ul>
+        </footer>
+
+    </html>

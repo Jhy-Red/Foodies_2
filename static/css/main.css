@@ -1,0 +1,74 @@
+
+@font-face {
+  font-family: garamond;
+  src: url('garamond.ttf');
+}
+
+html {
+background: lightgrey;
+}
+
+header{
+  background:rgb(16, 36, 92);
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 16px;
+  min-height: 25px;
+  list-style-type: none;
+}
+body {
+  min-height: 80%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align:center;
+}
+
+footer{
+  background:rgb(16, 36, 92);
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 16px;
+  min-height: 25px;
+  list-style-type: none;
+  position:sticky;
+}
+
+.hyperlink_disable {
+  color: currentColor;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.case-click {
+  color: white;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.box_home {
+  background-color: antiquewhite;
+  list-style-type: none;
+  border: 1px solid red ;
+  min-width: 25%;
+  width: 50%;
+  max-width: 100%;
+  align-items: center;
+  margin-top: 5%;
+  margin-left: 25%;
+  margin-right: 25%;
+
+}
+
+.box_IMC {
+  background-color: antiquewhite;
+  border: 1px solid red ;
+  min-width: 25%;
+  width: 50%;
+  max-width: 100%;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+
+}

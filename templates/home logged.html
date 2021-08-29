@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Foodies</title>
+        <link rel="stylesheet"    href= "/static/css/main.css" />
+        <link rel="shortcut icon" href= "static/css/images/fav.ico">
+    </head>
+
+    <header>             
+        <li>
+        <a class = "case-click" href= "/"> Accueil</a>
+        </li>
+    </header>
+    
+    <body>
+        <div class="box_home">
+        
+        <li> 
+            <a class = "hyperlink_disable" href = "/prediction-picture" > Prediction d'une photo</a> 
+        </li>
+        <li> 
+            <a class = "hyperlink_disable" href = "/database" > Base de données</a> 
+        </li>          
+        <li> 
+            <a class = "hyperlink_disable" href = "/deconnection" > Deconnection</a> 
+        </li>
+        <li> 
+            <a class = "hyperlink_disable" href = "/inscription" > Inscription</a> 
+        </li>
+        </div>
+
+    <div class = "box_IMC"> 
+        <p> Outils IMC </p>
+
+    <form method="POST" enctype="multipart/form-data">
+        Taille(cm)          : <input type = "number" name = "taille" /> <br>
+        Poids(kg)           : <input type = "number" name= "poids" /> <br>
+    <br>
+        <input type = "submit" value = "Calcul IMC">
+    </form><br>
+    
+    <p> {{imc}} </p>
+    </div>
+
+    
+    </body>
+
+    <footer>           
+            <li> <a class = "case-click" href= "/about"> A propos</a> </li>
+    </footer>
+
+</html>
