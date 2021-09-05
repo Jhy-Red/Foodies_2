@@ -4,7 +4,7 @@ try:
     secret_key=secret_key_file.readlines()
     secret_key_file.close()
 except :
-    secret_key_file=open("C:/Users/User/Documents/Projets.id.txt","r")
+    secret_key_file=open("C:/Users/User/Documents/Projet/id.txt","r")
     secret_key=secret_key_file.readlines()
     secret_key_file.close()
 #Stockage serveur

@@ -5,7 +5,7 @@ try:
     secret_data=secret_file.readlines()
     secret_file.close()
 except :
-    secret_file=open("C:/Users/User/Documents/Projets.id.txt","r")
+    secret_file=open("C:/Users/User/Documents/Projet/id.txt","r")
     secret_data=secret_file.readlines()
     secret_file.close()
 
