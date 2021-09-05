@@ -6,22 +6,36 @@
             <link rel="shortcut icon" href= "static/css/images/fav.ico">
         </head>
 
-        <header>
-            <ul class="menu">                
+        <header>            
             <li>
-            <a href= "/"> Accueil</a>
+            <a class = "case-click" href= "/"> Accueil</a>
           </li>
-        </ul>
         </header>
         
         <body>
-            <form method="POST" enctype="multipart/form-data">
-                Veuillez saisir le nom du champs de votre recherche : <input type="texte">
+            <form method="POST">
+                <label for="composant">Selectionner votre filtre</label><br>
+                <input name="composant" id="composant" list="composants">
+                <input name="order" id="order" value = "croissant" list ="orders">
                 <center><input type="submit" value="Filtre" /></center>
-          </form>
-  
-          <div> 
-              {{pred}}
+               </form>
+               
+               <datalist id="composants">
+                    {% for col in columns %}
+                    <option>{{ col }}</option>
+                    {% endfor %}
+               </datalist>
+               
+               <datalist id="orders">
+                
+                <option> croissant</option>
+                <option> décroissant</option>
+                
+                </datalist>
+
+            
+            <div> 
+                {{filtre}}
           </br>
             <table border="1" cellpadding="3" cellspacing="1">
                 {% for col in columns %}
@@ -41,10 +55,8 @@
   
         </body>
 
-        <footer> 
-            <ul class="menu">                
-                <li> <a href= "/about"> A propos</a> </li>
-            </ul>
+        <footer>               
+                <li> <a class = "case-click" href= "/about"> A propos</a> </li>
         </footer>
 
     </html>

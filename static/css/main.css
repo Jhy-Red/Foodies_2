@@ -39,11 +39,15 @@ footer{
   text-decoration: none;
 }
 
+.beta {
+  color: red;
+}
 .case-click {
   color: white;
   opacity: 1;
   text-decoration: none;
 }
+
 
 .box_home {
   background-color: antiquewhite;

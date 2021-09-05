@@ -52,20 +52,61 @@ def prediction_photo():
         resultat = pred.prediction(filename,model =2)
         resultat = tools.translate(resultat, dest = 'fr', short = True)
 
-        apports_cols,apports_row = tools.request_food_local(recherche = resultat,flask = True)
+        apports_cols,apports_row = tools.request_food_local(recherche = resultat,flask = True) #xls way
 
         resultat = "Votre photo semble contenir  :" + resultat
         
         return render_template('from_picture.html', pred = resultat, apports_cols = apports_cols, apports_row = apports_row )
+
     else :
         return render_template('from_picture.html')
 
-@app.route('/database')
+
+@app.route('/prediction-picture-beta', methods=['GET', 'POST'])
+def prediction_photo_beta(): 
+    if request.method == "POST":
+        image = request.files['image_users']
+        filename = tools.saves_pictures(UPLOAD_FOLDER,image,app)
+        resultat = pred.prediction(filename,model =2)
+        resultat = tools.translate(resultat, dest = 'fr', short = True)
+
+        columns = SQL_APP.show_sql(columns = True)
+        columns_list = columns.split(",")
+        data = SQL_APP.recherche_sql(resultat)
+        resultat = "Votre photo semble contenir  :" + resultat
+        
+        return render_template('from_picture_beta.html', pred = resultat, columns = columns_list, data = data )
+
+    else :
+        return render_template('from_picture_beta.html')
+
+@app.route('/database', methods=['GET', 'POST'])
 def show_database():
-    columns = SQL_APP.show_sql(columns = True)
-    columns_list = columns.split(",")
-    data = SQL_APP.show_sql()
-    return render_template('database.html', data = data,columns = columns_list )
+    if request.method == "POST":
+        columns = SQL_APP.show_sql(columns = True)
+        columns_list = columns.split(",")
+        filtre = request.form['composant']
+        order = request.form['order']
+        
+        if order == "décroissant" :
+            order_text = "DESC"
+        else : 
+            order_text = "ASC"    
+        
+        if filtre == "" :
+            data = SQL_APP.show_sql()
+            filtre_text == ""
+        else : 
+            data = SQL_APP.show_sql(filtre = filtre, order = order_text)
+            filtre_text = "Votre filtre actuel est {filtre} en classement {order}".format(filtre = filtre, order = order)
+
+        return render_template('database.html', data = data,columns = columns_list, filtre = filtre_text )
+    
+    else :
+        columns = SQL_APP.show_sql(columns = True)
+        columns_list = columns.split(",")
+        data = SQL_APP.show_sql()
+        return render_template('database.html', data = data,columns = columns_list )
 
 
 @app.route('/connection', methods=['GET', 'POST'])

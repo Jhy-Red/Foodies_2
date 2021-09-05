@@ -6,9 +6,9 @@
             <link rel="shortcut icon" href= "static/css/images/fav.ico">
         </head>
 
-        <header>          
+        <header>             
             <li>
-            <a class = "case-click" href= "/"> Accueil</a>
+           <a class = "case-click" href= "/"> Accueil</a>
           </li>
         </header>
         
@@ -22,12 +22,19 @@
           <div> 
               {{pred}}
           </br>
-              <table border="1" >
-                  {% for apport_row in apports_row %}
-                  {{apports_cols[loop.index]}}
-                  {{ apport_row|safe }}
-                  {% endfor %}
-              </table>
+          <table border="1" cellpadding="3" cellspacing="1">
+            {% for col in columns %}
+                <td>{{ col }}</td>
+            {% endfor %}
+
+            {% for row in data %}
+                <tr>
+                {% for d in row %}
+                    <td>{{ d }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
   
             </div>
   

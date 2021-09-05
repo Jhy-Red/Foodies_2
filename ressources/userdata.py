@@ -15,7 +15,6 @@ class User(UserMixin) :
 
     
     def get_id(self):
-        #return bytes(self.ID) # a transformer en unicode avant ré utilisation sinon crash
         return self.ID
 """
     def get_data(self,id):

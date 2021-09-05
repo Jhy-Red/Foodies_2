@@ -1,8 +1,14 @@
 #!usr/bin/python3
 #from re import TEMPLATE
-secret_file=open("/media/jhy/46AE-6494/Projet/id.txt","r")
-secret_data=secret_file.readlines()
-secret_file.close()
+try:
+    secret_file=open("/media/jhy/46AE-6494/Projet/id.txt","r")
+    secret_data=secret_file.readlines()
+    secret_file.close()
+except :
+    secret_file=open("C:/Users/User/Documents/Projets.id.txt","r")
+    secret_data=secret_file.readlines()
+    secret_file.close()
+
 import mysql.connector
 
 
@@ -131,7 +137,7 @@ def drop_table(table):
     mycursor.execute(request)
     mydb.commit()
     mycursor.close()
-#drop_table("USERS")
+#drop_table("DATA")
 
 def insert_table_USERS(MAIL,USERNAME ,PASSWORD, table = 'USERS',hash = True ):
     try :
@@ -257,7 +263,7 @@ def save_imc(user_id,imc,table = 'IMC'):
 
 #print(show_elements(Table="IMC"))
 
-def show_sql(table = "DATA",columns = False):
+def show_sql(table = "DATA",columns = False, filtre = "", order = ""):
     if columns is True :
         request_init = "SHOW COLUMNS  FROM {TABLE} ".format(TABLE = table)
         request = request_init
@@ -281,14 +287,24 @@ def show_sql(table = "DATA",columns = False):
         result = col
         
     else :
-        request_init = "SELECT DISTINCT * FROM {TABLE} ".format(TABLE = table)
-        request = request_init
+        if filtre == "" :
+            request_init = "SELECT DISTINCT * FROM {TABLE} ".format(TABLE = table)
+            request = request_init
 
-        mycursor = mydb.cursor()
+            mycursor = mydb.cursor()
 
-        mycursor.execute(request)
-        result = mycursor.fetchall()
-        mycursor.close()
+            mycursor.execute(request)
+            result = mycursor.fetchall()
+            mycursor.close()
+        else : 
+            request_init = "SELECT DISTINCT * FROM {TABLE} ".format(TABLE = table)
+            request_where = "ORDER BY {FILTRE} {ORDER}".format(FILTRE = filtre,ORDER = order)
+            request = request_init + request_where
+
+            mycursor = mydb.cursor()
+            mycursor.execute(request)
+            result = mycursor.fetchall()
+            mycursor.close()
     
     return result
 

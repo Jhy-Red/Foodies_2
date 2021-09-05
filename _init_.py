@@ -1,8 +1,12 @@
 #!/usr/bin/python3
-
-secret_key_file=open("/media/jhy/46AE-6494/Projet/id.txt","r")
-secret_key=secret_key_file.readlines()
-secret_key_file.close()
+try:
+    secret_key_file=open("/media/jhy/46AE-6494/Projet/id.txt","r")
+    secret_key=secret_key_file.readlines()
+    secret_key_file.close()
+except :
+    secret_key_file=open("C:/Users/User/Documents/Projets.id.txt","r")
+    secret_key=secret_key_file.readlines()
+    secret_key_file.close()
 #Stockage serveur
 UPLOAD_FOLDER = 'static/image'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -35,13 +39,9 @@ def start_app(app,host = '0.0.0.0', debug = True) :
     ,debug = debug
     )
 
-    app.secret_key = secret_key[0]
+    
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
-secret_key_file=open("/media/jhy/46AE-6494/Projet/id.txt","r")
-secret_key=secret_key_file.readlines()
-secret_key_file.close()
 
 
 
